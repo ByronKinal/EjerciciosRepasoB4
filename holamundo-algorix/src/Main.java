@@ -13,7 +13,7 @@ public class Main {
         System.out.println("3.Generar un numero aleatorio y adivinar el numero 1 al 10");
         System.out.println("4.convertir frarengid y centígrados y alreves");
         System.out.println("5.hacer un crud de lista de tareas crear listar y eliminar editar tareas");
-        System.out.println("6. Salir");
+        System.out.println("6.Salir");
         Opcion = sc.nextInt();
 
         switch (Opcion){
