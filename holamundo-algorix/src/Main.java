@@ -30,6 +30,7 @@ public class Main {
                 I.Convertidor();
                 break;
             case 5:
+                I.BlogTareas();
                 break;
             case 6:
                 System.out.println("Saliendo del programa");

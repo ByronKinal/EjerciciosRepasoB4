@@ -1,10 +1,12 @@
 package org.algorix.controller;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Ejercicios {
     Scanner sc = new Scanner(System.in);
     Random R = new Random();
+    ArrayList <String> tareas = new ArrayList<>();
     int Cantidad = 0;
 
     public void ParImpar(){
@@ -87,5 +89,74 @@ public class Ejercicios {
             System.out.println("Quiere continuar si/no (en minuscula)");
             resultado = sc.nextLine();
         return resultado;
+    }
+
+    public void BlogTareas (){
+        boolean continuar = true;
+        do {
+            int j = 1;
+            System.out.println("Que decea hacer");
+            System.out.println("1.Crear tarea");
+            System.out.println("2.Listar tareas");
+            System.out.println("3.Eliminar tarea");
+            System.out.println("4.Editar tarea");
+            System.out.println("5.Salir");
+            int opcion = sc.nextInt();
+            sc.nextLine();
+            switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese el nombre de la tarea a crear");
+                    String tareaCrear = sc.nextLine();
+                    tareas.add(tareaCrear);
+                    System.out.println("Tarea '" + tareaCrear + "' creada.");
+                    break;
+                case 2:
+                    System.out.println("Lista de tareas:");
+                    if (tareas.isEmpty()) {
+                        System.out.println("No hay tareas creadas.");
+                    } else {
+                        for (int i = 0; i < tareas.size(); i++) {
+
+                            System.out.println(j+". - " + tareas.get(i));
+                            j= j + 1;
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < tareas.size(); i++) {
+                        System.out.println(j+". - " + tareas.get(i));
+                        j++;
+                    }
+                    System.out.println("Ingrese el numero de la tarea a eliminar");
+                    int tareaEliminar = sc.nextInt() -1;
+                    if (tareas.remove(tareas.get(tareaEliminar))) {
+                        System.out.println("Tarea " + " eliminada.");
+                    } else {
+                        System.out.println("Tarea " + " no encontrada.");
+                    }
+                    break;
+                case 4:
+                    for (int i = 0; i < tareas.size(); i++) {
+                        System.out.println(j+". - " + tareas.get(i));
+                        j++;
+                    }
+                    System.out.println("Ingrese el numero de la tarea a editar");
+                    int tareaN = sc.nextInt();
+                    System.out.println("Ingrese el nuevo nombre de la tarea");
+                    sc.nextLine();
+                    String nuevaTarea = sc.nextLine();
+                    tareas.set(tareaN - 1, nuevaTarea);
+                    System.out.println("Tarea '" + nuevaTarea + "' editada.");
+                    break;
+                case 5:
+                    System.out.println("Saliendo del blog de tareas.");
+                    continuar = false;
+                    System.out.println("------------------------------------------------------------------------------------------------");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+                    break;
+            }
+        }while (continuar);
     }
 }
